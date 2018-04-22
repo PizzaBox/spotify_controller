@@ -1,5 +1,5 @@
 # spotify_controller
-Control Spotify playback from an easy to use script, with no dependencies required.
+Control Spotify playback from an easy to use node.js script, with no dependencies required.
 
 ### Functions:
 
