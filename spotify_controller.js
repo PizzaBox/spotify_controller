@@ -70,6 +70,11 @@ const Controller = {
         if (callback == undefined){
             callback = function(){};
         }
+        if (typeof params == 'function'){
+            callback = params;
+            params = {};
+
+        }
         Private.get('remote/status.json', params, (err, data)=>{
             callback(err, data)
         })
