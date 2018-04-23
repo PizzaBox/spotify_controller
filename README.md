@@ -19,7 +19,7 @@ Control Spotify playback from an easy to use node.js script, with no dependencie
   * **uri (required)**: The URI of the track you would like to play. Example: **spotify:track:4uLU6hMCjMI75M1A2tKUQC**
   * **context (optional)**: The context is the album/playlist uri that the track uri belongs to. This allows you to continue playing the next track the inital request is finished. If not set, playback will stop after the track is finished (or repeat the same track if you have loop repeat set in spotify)
          
-#### .status: ({returnafter: \<int seconds\>, returnon: \<string comma seperated options\>, (error, \<track object\>)=>{})
+#### .status: ({returnafter: \<int seconds\>, returnon: \<string comma seperated options\>}, (error, \<track object\>)=>{})
 * Description: *Returns a <track object> containing information about the currently playing track.*
 * Params:
   * **returnafter (optional)**: Will return data after set seconds. Requests longer than 30s will sometimes timeout.
