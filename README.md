@@ -35,7 +35,7 @@ Control Spotify playback from an easy to use node.js script, with no dependencie
 
 ### Track Object:
 ```javascript
-  {
+{
 	"version": 0,
 	"client_version": "xxxxx",
 	"playing": false,
@@ -109,7 +109,7 @@ Controller.on('ready', ()=>{
 					Controller.unpause();
 				}, 2000)
 			}, 5000);
-    	})
+		})
     }, 5000);   
 });
   
