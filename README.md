@@ -17,13 +17,13 @@ Control Spotify playback from an easy to use node.js script, with no dependencie
 * Description: *Play a Spotify URI with or without context*
 * Params:
   * **uri (required)**: The URI of the track you would like to play. Example: **spotify:track:4uLU6hMCjMI75M1A2tKUQC**
-  * **context (optional)**: The context is the album/playlist uri that the track uri belongs to. This allows you to continue playing the next track the inital request is finished. If not set, playback will stop after the track is finished (or repeat the same track if you have loop repeat set in spotify)
+  * **context (optional)**: The context is the album/playlist uri that the **uri** param belongs to. This allows you to continue playing the next track after the inital request is finished. If not set, playback will stop after the track is finished (or repeat the same track if you have loop repeat set in spotify)
          
-#### .status: ({returnafter: \<int seconds\>, returnon: \<string comma seperated options\>}, (error, \<track object\>)=>{})
+#### .status: ({returnafter: \<int seconds\>, returnon: \<string events\>}, (error, \<track object\>)=>{})
 * Description: *Returns a <track object> containing information about the currently playing track.*
 * Params:
   * **returnafter (optional)**: Will return data after set seconds. Requests longer than 30s will sometimes timeout.
-  * **returnon (optional)**: Will return data when specified events happen. Events: login/logout/error/play/pause. Example: login,play,pause
+  * **returnon (optional)**: Will return data after the specified events. Events: login/logout/error/play/pause. Example: login,play,pause
         
 #### .on(\<event\>, (\<track object\>)=>{})
 * Desciption: *Runs a function and returns a <track object> when the event is triggered.*
@@ -87,7 +87,7 @@ const Controller = require('./spotify_controller');
 
 Controller.init();
 Controller.on('ready', ()=>{
-    console.log('Controller is ready')
+	console.log('Controller is ready')
     Controller.on('playback_change', (data)=>{
         console.log(`Is playing: ${data.playing} (${Math.floor(data.playing_position)}/${data.track.length})`)
     });
@@ -98,17 +98,17 @@ Controller.on('ready', ()=>{
 
     setTimeout(()=>{
     	Controller.play({uri: 'spotify:track:4uLU6hMCjMI75M1A2tKUQC', context: 'spotify:album:6N9PS4QXF1D0OWPk0Sxtb4'}, (err, data)=>{
-    		if (err){
-    			console.log(err);
-    			return;
-    		}
-    		console.log('Gottem');
-    		setTimeout(()=>{
-    			Controller.pause();
-    			setTimeout(()=>{
-    				Controller.unpause();
-    			}, 2000)
-    		}, 5000);
+			if (err){
+				console.log(err);
+				return;
+			}
+			console.log('Gottem');
+			setTimeout(()=>{
+				Controller.pause();
+				setTimeout(()=>{
+					Controller.unpause();
+				}, 2000)
+			}, 5000);
     	})
     }, 5000);   
 });
