@@ -210,7 +210,7 @@ const Private = {
     },
     request: function(path, callback){
         let path_parse = url.parse(path)
-        const options = {
+        let options = {
             hostname: path_parse.hostname,
             path: path_parse.path,
             port: path_parse.port,
@@ -219,7 +219,7 @@ const Private = {
                 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:56.0) Gecko/20100101 Firefox/56.0'
             }
         };
-        const req = request_libs[path_parse.protocol].get(options, (res) => {
+        let req = request_libs[path_parse.protocol].get(options, (res) => {
             res.setEncoding('utf8');
 
             let data = ''
